@@ -10,7 +10,7 @@ using NetCore.Fundamentals.Client.Web.Models;
 namespace NetCore.Fundamentals.Client.Web.Controllers
 {
     public class HomeController : Controller
-    {
+    {//Cambios
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
