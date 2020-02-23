@@ -20,7 +20,8 @@ namespace NetCore.Fundamentals.Client.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Person person = new Person("Oscar", 15);
+            return View(person);
         }
 
         public IActionResult Privacy()

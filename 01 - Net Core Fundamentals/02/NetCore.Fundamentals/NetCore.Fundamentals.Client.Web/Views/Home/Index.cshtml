@@ -1,8 +1,50 @@
-﻿@{
+﻿@model Person
+@{
     ViewData["Title"] = "Home Page";
+    Person person = new Person("Erick", 38);
+    int numero = 51;
+    string quote = "";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+
+        <p>@DateTime.Now</p>
+        <p>@DateTime.IsLeapYear(2020)</p>
+
+        <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
+        <p>@person.Name tiene Age@(person.Age)</p>
+        <p>erick.arostegui.cunza@@gmail.com.pe</p>
+
+        @if (numero % 2 == 0) {
+            quote = "the future depends on what you do today. - Mahatma Gandhi";
+        }
+
+        <p>@quote</p>
+
+        @{
+            quote = "Hater cannot drive out hate, only love can do that. - Martin Luther King, Jr";
+        }
+
+        <p>@quote</p>
+
+        @{ 
+            void RenderName(string name)
+            {
+                if (numero % 2 == 0)
+                {
+                <p>Name: <strong>@name</strong></p>
+
+                }
+            }
+        }
+
+        <p>@Model.Name tiene @Model.Age años</p>
+
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    @{ 
+            RenderName("Mahatma Gandhi");
+            RenderName("Martin Luther King, Jr");
+    }
+    </div>
