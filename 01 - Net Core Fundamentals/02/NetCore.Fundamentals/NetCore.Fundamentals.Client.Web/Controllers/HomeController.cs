@@ -9,6 +9,7 @@ using NetCore.Fundamentals.Client.Web.Models;
 
 namespace NetCore.Fundamentals.Client.Web.Controllers
 {
+    [Route("Inicio/[action]")]
     public class HomeController : Controller
     {//Cambios
         private readonly ILogger<HomeController> _logger;
@@ -16,6 +17,13 @@ namespace NetCore.Fundamentals.Client.Web.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+        }
+
+        [HttpPost]
+        //[Route("Test/Action")]
+        public string Test([FromBody]TestRequest testRequest)
+        {
+            return "Hola Mundo - " + testRequest.Param.ToString();
         }
 
         public IActionResult Index()
