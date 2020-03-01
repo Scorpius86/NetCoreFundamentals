@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GalaxyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+          </Key>
+          <Property Name="ComentarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="Contenido" Type="varchar(max)" />
+          <Property Name="UsuarioIdPropietario" Type="int" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioIdActualizacion" Type="int" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="SysStartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SysEndTime" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Galaxy.dbo.ComentarioHistoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComentarioHistoria">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+            <PropertyRef Name="PostId" />
+            <PropertyRef Name="UsuarioIdPropietario" />
+            <PropertyRef Name="UsuarioIdCreacion" />
+            <PropertyRef Name="FechaCreacion" />
+            <PropertyRef Name="UsuarioIdActualizacion" />
+            <PropertyRef Name="FechaActualizacion" />
+            <PropertyRef Name="SysStartTime" />
+            <PropertyRef Name="SysEndTime" />
+          </Key>
+          <Property Name="ComentarioId" Type="int" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="Contenido" Type="varchar(max)" />
+          <Property Name="UsuarioIdPropietario" Type="int" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioIdActualizacion" Type="int" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="SysStartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SysEndTime" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Contenido" Type="varchar(max)" />
+          <Property Name="UsuarioIdPropietario" Type="int" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioIdActualizacion" Type="int" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="SysStartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SysEndTime" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Galaxy.dbo.PostHistoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PostHistoria">
+          <Key>
+            <PropertyRef Name="PostId" />
+            <PropertyRef Name="Titulo" />
+            <PropertyRef Name="UsuarioIdPropietario" />
+            <PropertyRef Name="UsuarioIdCreacion" />
+            <PropertyRef Name="FechaCreacion" />
+            <PropertyRef Name="UsuarioIdActualizacion" />
+            <PropertyRef Name="FechaActualizacion" />
+            <PropertyRef Name="SysStartTime" />
+            <PropertyRef Name="SysEndTime" />
+          </Key>
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Contenido" Type="varchar(max)" />
+          <Property Name="UsuarioIdPropietario" Type="int" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioIdActualizacion" Type="int" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="SysStartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SysEndTime" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ComentarioPost">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUsuarioActualizacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioIdActualizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUsuarioCreacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioIdCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUsuarioPropietario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioIdPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUsuarioActualizacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UsuarioIdActualizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUsuarioCreacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UsuarioIdCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUsuarioPropietario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UsuarioIdPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GalaxyModelStoreContainer">
+          <EntitySet Name="Comentario" EntityType="Self.Comentario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComentarioHistoria" EntityType="Self.ComentarioHistoria" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComentarioHistoria].[ComentarioId] AS [ComentarioId], 
+    [ComentarioHistoria].[PostId] AS [PostId], 
+    [ComentarioHistoria].[Contenido] AS [Contenido], 
+    [ComentarioHistoria].[UsuarioIdPropietario] AS [UsuarioIdPropietario], 
+    [ComentarioHistoria].[UsuarioIdCreacion] AS [UsuarioIdCreacion], 
+    [ComentarioHistoria].[FechaCreacion] AS [FechaCreacion], 
+    [ComentarioHistoria].[UsuarioIdActualizacion] AS [UsuarioIdActualizacion], 
+    [ComentarioHistoria].[FechaActualizacion] AS [FechaActualizacion], 
+    [ComentarioHistoria].[SysStartTime] AS [SysStartTime], 
+    [ComentarioHistoria].[SysEndTime] AS [SysEndTime]
+    FROM [dbo].[ComentarioHistoria] AS [ComentarioHistoria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PostHistoria" EntityType="Self.PostHistoria" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PostHistoria].[PostId] AS [PostId], 
+    [PostHistoria].[Titulo] AS [Titulo], 
+    [PostHistoria].[Contenido] AS [Contenido], 
+    [PostHistoria].[UsuarioIdPropietario] AS [UsuarioIdPropietario], 
+    [PostHistoria].[UsuarioIdCreacion] AS [UsuarioIdCreacion], 
+    [PostHistoria].[FechaCreacion] AS [FechaCreacion], 
+    [PostHistoria].[UsuarioIdActualizacion] AS [UsuarioIdActualizacion], 
+    [PostHistoria].[FechaActualizacion] AS [FechaActualizacion], 
+    [PostHistoria].[SysStartTime] AS [SysStartTime], 
+    [PostHistoria].[SysEndTime] AS [SysEndTime]
+    FROM [dbo].[PostHistoria] AS [PostHistoria]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ComentarioPost" Association="Self.FK_ComentarioPost">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUsuarioActualizacion" Association="Self.FK_ComentarioUsuarioActualizacion">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUsuarioCreacion" Association="Self.FK_ComentarioUsuarioCreacion">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUsuarioPropietario" Association="Self.FK_ComentarioUsuarioPropietario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUsuarioActualizacion" Association="Self.FK_PostUsuarioActualizacion">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUsuarioCreacion" Association="Self.FK_PostUsuarioCreacion">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUsuarioPropietario" Association="Self.FK_PostUsuarioPropietario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GalaxyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+          </Key>
+          <Property Name="ComentarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioIdPropietario" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioIdActualizacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysStartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SysEndTime" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_ComentarioPost" FromRole="Comentario" ToRole="Post" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_ComentarioUsuarioActualizacion" FromRole="Comentario" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_ComentarioUsuarioCreacion" FromRole="Comentario" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario2" Relationship="Self.FK_ComentarioUsuarioPropietario" FromRole="Comentario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioIdPropietario" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioIdActualizacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysStartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SysEndTime" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Comentarios" Relationship="Self.FK_ComentarioPost" FromRole="Post" ToRole="Comentario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_PostUsuarioActualizacion" FromRole="Post" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_PostUsuarioCreacion" FromRole="Post" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario2" Relationship="Self.FK_PostUsuarioPropietario" FromRole="Post" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Comentarios" Relationship="Self.FK_ComentarioUsuarioActualizacion" FromRole="Usuario" ToRole="Comentario" />
+          <NavigationProperty Name="Comentarios1" Relationship="Self.FK_ComentarioUsuarioCreacion" FromRole="Usuario" ToRole="Comentario" />
+          <NavigationProperty Name="Comentarios2" Relationship="Self.FK_ComentarioUsuarioPropietario" FromRole="Usuario" ToRole="Comentario" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_PostUsuarioActualizacion" FromRole="Usuario" ToRole="Post" />
+          <NavigationProperty Name="Posts1" Relationship="Self.FK_PostUsuarioCreacion" FromRole="Usuario" ToRole="Post" />
+          <NavigationProperty Name="Posts2" Relationship="Self.FK_PostUsuarioPropietario" FromRole="Usuario" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="ComentarioHistoria">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+            <PropertyRef Name="PostId" />
+            <PropertyRef Name="UsuarioIdPropietario" />
+            <PropertyRef Name="UsuarioIdCreacion" />
+            <PropertyRef Name="FechaCreacion" />
+            <PropertyRef Name="UsuarioIdActualizacion" />
+            <PropertyRef Name="FechaActualizacion" />
+            <PropertyRef Name="SysStartTime" />
+            <PropertyRef Name="SysEndTime" />
+          </Key>
+          <Property Name="ComentarioId" Type="Int32" Nullable="false" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioIdPropietario" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioIdActualizacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysStartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SysEndTime" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="PostHistoria">
+          <Key>
+            <PropertyRef Name="PostId" />
+            <PropertyRef Name="Titulo" />
+            <PropertyRef Name="UsuarioIdPropietario" />
+            <PropertyRef Name="UsuarioIdCreacion" />
+            <PropertyRef Name="FechaCreacion" />
+            <PropertyRef Name="UsuarioIdActualizacion" />
+            <PropertyRef Name="FechaActualizacion" />
+            <PropertyRef Name="SysStartTime" />
+            <PropertyRef Name="SysEndTime" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioIdPropietario" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioIdCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioIdActualizacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysStartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SysEndTime" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <Association Name="FK_ComentarioPost">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUsuarioActualizacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioIdActualizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUsuarioCreacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioIdCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUsuarioPropietario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="UsuarioIdPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUsuarioActualizacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UsuarioIdActualizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUsuarioCreacion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UsuarioIdCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUsuarioPropietario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UsuarioIdPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GalaxyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comentarios" EntityType="Self.Comentario" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="ComentarioHistorias" EntityType="Self.ComentarioHistoria" />
+          <EntitySet Name="PostHistorias" EntityType="Self.PostHistoria" />
+          <AssociationSet Name="FK_ComentarioPost" Association="Self.FK_ComentarioPost">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Comentario" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUsuarioActualizacion" Association="Self.FK_ComentarioUsuarioActualizacion">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Comentario" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUsuarioCreacion" Association="Self.FK_ComentarioUsuarioCreacion">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Comentario" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUsuarioPropietario" Association="Self.FK_ComentarioUsuarioPropietario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Comentario" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUsuarioActualizacion" Association="Self.FK_PostUsuarioActualizacion">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUsuarioCreacion" Association="Self.FK_PostUsuarioCreacion">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUsuarioPropietario" Association="Self.FK_PostUsuarioPropietario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GalaxyModelStoreContainer" CdmEntityContainer="GalaxyEntities">
+          <EntitySetMapping Name="Comentarios">
+            <EntityTypeMapping TypeName="GalaxyModel.Comentario">
+              <MappingFragment StoreEntitySet="Comentario">
+                <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="UsuarioIdPropietario" ColumnName="UsuarioIdPropietario" />
+                <ScalarProperty Name="UsuarioIdCreacion" ColumnName="UsuarioIdCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioIdActualizacion" ColumnName="UsuarioIdActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="SysStartTime" ColumnName="SysStartTime" />
+                <ScalarProperty Name="SysEndTime" ColumnName="SysEndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="GalaxyModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="UsuarioIdPropietario" ColumnName="UsuarioIdPropietario" />
+                <ScalarProperty Name="UsuarioIdCreacion" ColumnName="UsuarioIdCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioIdActualizacion" ColumnName="UsuarioIdActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="SysStartTime" ColumnName="SysStartTime" />
+                <ScalarProperty Name="SysEndTime" ColumnName="SysEndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="GalaxyModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComentarioHistorias">
+            <EntityTypeMapping TypeName="GalaxyModel.ComentarioHistoria">
+              <MappingFragment StoreEntitySet="ComentarioHistoria">
+                <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="UsuarioIdPropietario" ColumnName="UsuarioIdPropietario" />
+                <ScalarProperty Name="UsuarioIdCreacion" ColumnName="UsuarioIdCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioIdActualizacion" ColumnName="UsuarioIdActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="SysStartTime" ColumnName="SysStartTime" />
+                <ScalarProperty Name="SysEndTime" ColumnName="SysEndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostHistorias">
+            <EntityTypeMapping TypeName="GalaxyModel.PostHistoria">
+              <MappingFragment StoreEntitySet="PostHistoria">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="UsuarioIdPropietario" ColumnName="UsuarioIdPropietario" />
+                <ScalarProperty Name="UsuarioIdCreacion" ColumnName="UsuarioIdCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioIdActualizacion" ColumnName="UsuarioIdActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="SysStartTime" ColumnName="SysStartTime" />
+                <ScalarProperty Name="SysEndTime" ColumnName="SysEndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

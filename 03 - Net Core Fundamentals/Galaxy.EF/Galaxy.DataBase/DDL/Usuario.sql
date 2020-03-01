@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Usuario]
+(
+	UsuarioId INT NOT NULL IDENTITY,
+	NombreUsuario VARCHAR(200) NOT NULL,
+	Clave VARCHAR(200) NOT NULL,
+	Nombre VARCHAR(200) NOT NULL,
+	ApellidoPaterno VARCHAR(200) NOT NULL,
+	ApellidoMaterno VARCHAR(200) NOT NULL,
+
+	CONSTRAINT PK_Usuario PRIMARY KEY (UsuarioId)
+)
