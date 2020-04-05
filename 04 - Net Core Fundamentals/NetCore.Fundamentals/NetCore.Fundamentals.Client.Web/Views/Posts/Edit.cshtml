@@ -1,0 +1,64 @@
+﻿@model NetCore.Fundamentals.Client.Web.Data.Entities.Post
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PostId" />
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contenido" class="control-label"></label>
+                <input asp-for="Contenido" class="form-control" />
+                <span asp-validation-for="Contenido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioIdPropietario" class="control-label"></label>
+                <select asp-for="UsuarioIdPropietario" class="form-control" asp-items="ViewBag.UsuarioIdPropietario"></select>
+                <span asp-validation-for="UsuarioIdPropietario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioIdCreacion" class="control-label"></label>
+                <select asp-for="UsuarioIdCreacion" class="form-control" asp-items="ViewBag.UsuarioIdCreacion"></select>
+                <span asp-validation-for="UsuarioIdCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCreacion" class="control-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioIdActualizacion" class="control-label"></label>
+                <select asp-for="UsuarioIdActualizacion" class="form-control" asp-items="ViewBag.UsuarioIdActualizacion"></select>
+                <span asp-validation-for="UsuarioIdActualizacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaActualizacion" class="control-label"></label>
+                <input asp-for="FechaActualizacion" class="form-control" />
+                <span asp-validation-for="FechaActualizacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

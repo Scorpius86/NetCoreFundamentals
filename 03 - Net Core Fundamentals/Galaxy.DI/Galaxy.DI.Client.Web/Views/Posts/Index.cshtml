@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Galaxy.DI.Client.Web.Entities.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contenido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaActualizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioIdActualizacionNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioIdCreacionNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioIdPropietarioNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaActualizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioIdActualizacionNavigation.ApellidoMaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioIdCreacionNavigation.ApellidoMaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioIdPropietarioNavigation.ApellidoMaterno)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PostId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PostId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

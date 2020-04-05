@@ -13,7 +13,7 @@ namespace ValidationSample.Models
         [StringLength(100)]
         public string Title { get; set; }
 
-        [ClassicMovieWithClientValidator(1960)]
+        [ClassicMovie(1960)]
         [DataType(DataType.Date)]
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }

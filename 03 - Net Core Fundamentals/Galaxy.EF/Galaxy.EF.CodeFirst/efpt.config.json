@@ -1,1 +1,34 @@
-﻿{"ContextClassName":"GalaxyDatabaseContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":false,"OutputPath":"Entities","ProjectRootNamespace":"Galaxy.EF.CodeFirst","SelectedToBeGenerated":0,"Tables":[{"HasPrimaryKey":true,"Name":"dbo.Comentario"},{"HasPrimaryKey":true,"Name":"dbo.Post"},{"HasPrimaryKey":true,"Name":"dbo.Usuario"}],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":true}
+﻿{
+   "ContextClassName": "GalaxyDatabaseContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Entities",
+   "ProjectRootNamespace": "Galaxy.EF.CodeFirst",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Comentario]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Post]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Usuario]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

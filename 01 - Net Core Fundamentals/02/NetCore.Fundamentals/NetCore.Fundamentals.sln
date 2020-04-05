@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Fundamentals.Client.Web", "NetCore.Fundamentals.Client.Web\NetCore.Fundamentals.Client.Web.csproj", "{9AD129C3-2A77-49D2-A377-4395FFD121F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Fundamentals.Client.Web", "NetCore.Fundamentals.Client.Web\NetCore.Fundamentals.Client.Web.csproj", "{9AD129C3-2A77-49D2-A377-4395FFD121F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Fundamentals.API", "NetCore.Fundamentals.API\NetCore.Fundamentals.API.csproj", "{EBA0DB42-D0DF-4C9A-854C-E9318518DFA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9AD129C3-2A77-49D2-A377-4395FFD121F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AD129C3-2A77-49D2-A377-4395FFD121F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AD129C3-2A77-49D2-A377-4395FFD121F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA0DB42-D0DF-4C9A-854C-E9318518DFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA0DB42-D0DF-4C9A-854C-E9318518DFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA0DB42-D0DF-4C9A-854C-E9318518DFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA0DB42-D0DF-4C9A-854C-E9318518DFA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
