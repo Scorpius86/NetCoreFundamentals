@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetCore.Fundametals.Security.Data.Repositories;
 using NetCore.Fundametals.Security.Dtos;
 
 namespace NetCore.Fundametals.Security.Client.Web.Controllers
-{
+{    
     public class ProposalController : Controller
     {
         private readonly IConferenceRepository _conferenceRepository;
@@ -27,7 +28,7 @@ namespace NetCore.Fundametals.Security.Client.Web.Controllers
 
             return View(await _proposalRepository.GetAllForConference(conferenceId));
         }
-
+        
         public IActionResult AddProposal(int conferenceId)
         {
             ViewBag.Title = "Speaker - Add Proposal";
