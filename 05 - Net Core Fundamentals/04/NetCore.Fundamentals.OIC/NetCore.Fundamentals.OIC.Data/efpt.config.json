@@ -1,0 +1,34 @@
+﻿{
+   "ContextClassName": "NetcoreFundamentalsOICContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Context",
+   "OutputPath": "Entities",
+   "ProjectRootNamespace": "NetCore.Fundamentals.OIC.Data",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Attendee]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Conference]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Proposal]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NetCore.Fundamentals.OIC.Client.Web</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="~/img/logo.png" style="max-width:100%" />
+            </div>
+            <div class="col-md-9 titlecol">
+                <span class="title">@ViewBag.Title</span>
+            </div>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

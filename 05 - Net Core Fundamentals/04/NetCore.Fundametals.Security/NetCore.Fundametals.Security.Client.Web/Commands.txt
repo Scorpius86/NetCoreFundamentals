@@ -1,0 +1,56 @@
+﻿Add Scafoldin, de Identity
+seleccionar crear un nuevo db context
+confgirar segun txt
+cambiar el nombre de la bd a generar
+
+add-migration IdentityInitial -Context NetCoreFundametalsSecurityClientWebContext
+update-database -Context NetCoreFundametalsSecurityClientWebContext
+
+modificar el login partial
+modificar el layout agragendo el partial login 
+Agregar lista de claims en index
+(Ejecutar)
+
+add-migration User-CareerStartedDate -Context NetCoreFundametalsSecurityClientWebContext
+Agregar una clase ApplicationUserClaimsPrincipalFactory
+registrar en DI de Identity (Ejecutar)
+
+Agregar ClaimsTransformer a Identity
+Modificar el login aprtial para mostrar el nombre (Ejecutar)
+
+Agregar en la tabla UserClaim "Birthdate" "1 Jan 2000" (Ejecutar)
+
+Modificar register agragando FullName y BrithDate tanto en vista como codigo (ejecutar,registrar un usuario)
+
+Modificar IdentityHostingStartup cambiando el AddIdentity, agregar DefaulrUI y DefaultToken
+Modificar ApplicationUserClaimsPrincipalFactory agregando Role
+
+Agregar a la tabla Roles "Organizer"
+Asignar el rol a un usuario
+Agregar Claims al rol creado :
+	- Type: Permission, Value: AddConference
+Ejecutar y revisar ROles
+
+Crear la clase EmailSender en la carpeta Identity
+crear una cuenta en SendGrid
+	- API Key, NetCore.Fundamentals.Security, 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
+agregar a secret manager {"SendGrid":{"ApiKey":"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","FromName":"NetCore Fundamentals","FromEmail":"NetCore.Fundamentals@Security.com"}}
+registrar en el DI de IdentityHostingStartup EmailSender (Ejecutar y registrar un usuario y validar el correo)
+
+Two Factor
+ir al perfil del usuario y habilitar two factor
+ir a https://4sh.nl/qrcodejs y copiar el codigo en /lib/qrcode.min.js
+Agregar Scafolding, Identity, seleccionar EnableAuthenticator, seleccionar un contexto existente.
+Ir a la nueva pagina creada y en la aprte final del archivo agregar la llmada de /lib/qrcode.min.js
+Agregar codigo js para creacion de QR
+editar Html para mostrar QR
+Cambiar el titulo de la aplicacion GenerateQrCodeUri
+Ejecutar, iar a two factor, desde el celular escanear e ir al link, luego colocar el codigo de verificacion 
+Cerrar sesion e iniciar nuevamente,
+
+
+External Provider
+Agregar a secret manager las credeciales de google
+Agregar el proveedor de autenticacion de Google a IdentityHostingStartup
+ejecutar a ir a login (no va permitir con usuario existente), logearse ir a external provider y asociar un correo google
+Agregat en scafolding external login
